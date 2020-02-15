@@ -1,5 +1,6 @@
 package com.user.impl;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -25,7 +26,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.user.domain.UserDomain;
 import com.user.impl.entity.User;
+import com.user.impl.entity.UserExamEntity;
 import com.user.impl.repository.UserDao;
+import com.user.impl.repository.UserExamRepository;
 import com.user.impl.transformer.UserTransformer;
 import com.user.impl.validator.Validator;
 import com.user.service.UserServiceInterface;
@@ -38,7 +41,8 @@ public class UserService implements UserServiceInterface {
 	@Autowired
 	private UserDao userRepository;
 	
-	@CrossOrigin(origins = "http://localhost:4201")
+	
+	@CrossOrigin(origins = {"http://localhost:4201","https://test-6780f.firebaseapp.com"})
 	@PostMapping(path="/") // Map ONLY POST Requests
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public @ResponseBody Map addNewUser (@RequestBody UserDomain c) {
@@ -122,7 +126,7 @@ public class UserService implements UserServiceInterface {
 		return userRepository.findById(Id);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4201")
+	@CrossOrigin(origins = {"http://localhost:4201","https://test-6780f.firebaseapp.com"})
 	@PostMapping(path="/login")
 	@Produces(MediaType.APPLICATION_JSON)
 	//@Path("/all")
@@ -144,5 +148,6 @@ public class UserService implements UserServiceInterface {
 		System.out.println(user.getUsername());
 		return userRepository.verifyUsername(user.getUsername());
 	}
+	
 	
 }
