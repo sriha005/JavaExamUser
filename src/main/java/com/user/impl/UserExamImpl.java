@@ -27,7 +27,7 @@ public class UserExamImpl {
 	@Autowired
 	UserExamRepository ueRepository;
 
-	@CrossOrigin(origins = {"http://localhost:4201","https://test-6780f.firebaseapp.com"})
+	@CrossOrigin(origins = {"http://192.168.0.165:4201","http://localhost:4201","https://test-6780f.firebaseapp.com"})
 	@PostMapping(path="/")
 	public @ResponseBody UserExamEntity addExam(@RequestBody UserExamEntity e ){
 		// This returns a JSON or XML with the users
@@ -47,7 +47,7 @@ public class UserExamImpl {
 		return ueRepository.findAll();
 	}
 	
-	@CrossOrigin(origins = {"http://localhost:4201","https://test-6780f.firebaseapp.com"})
+	@CrossOrigin(origins = {"http://192.168.0.165:4201","http://localhost:4201","https://test-6780f.firebaseapp.com"})
 	@GetMapping(path="/id")
 	public @ResponseBody int getUserExamID() {
 		ArrayList<Integer> id = ueRepository.getUserExamID();

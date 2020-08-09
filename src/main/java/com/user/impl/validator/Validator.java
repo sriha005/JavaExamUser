@@ -23,7 +23,7 @@ public class Validator {
 	public static Object validate(UserDomain u) throws UserException {
 		String s = null;
 		Client client = ClientBuilder.newClient();
-		String REST_URI = "http://localhost:8082/user/checkUsername";
+		String REST_URI = "http://192.168.0.164:8082/user/checkUsername";
 		GenericType<User> list = new GenericType<User>() {};
 		Response response = client
 	      .target(REST_URI)
@@ -31,7 +31,7 @@ public class Validator {
 	         .post(Entity.entity(u,MediaType.APPLICATION_JSON));
 		
 		UserDomain user = response.readEntity(UserDomain.class);
-		
+		System.out.println("nigggaga" + " " + s);
 		try {
 			if(!u.checkNullField().equals("gucci")) {
 				
@@ -71,10 +71,12 @@ public class Validator {
 			e.printStackTrace();
 		}
 		finally {
+			
 			if(s!=null) {
 				return s;
 			}
 			else {
+				System.out.println(s);
 				return "200 success";
 			}
 		}

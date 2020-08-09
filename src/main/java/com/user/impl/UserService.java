@@ -42,7 +42,7 @@ public class UserService implements UserServiceInterface {
 	private UserDao userRepository;
 	
 	
-	@CrossOrigin(origins = {"http://localhost:4201","https://test-6780f.firebaseapp.com"})
+	@CrossOrigin(origins = {"http://192.168.0.165:4201","http://localhost:4201","https://test-6780f.firebaseapp.com"})
 	@PostMapping(path="/") // Map ONLY POST Requests
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public @ResponseBody Map addNewUser (@RequestBody UserDomain c) {
@@ -66,11 +66,12 @@ public class UserService implements UserServiceInterface {
 		Object a = null;
 		//u.setUserID(7);
 		try {
+			
 			a = Validator.validate(c);
 			
 		} catch (Exception m){System.out.println("Exception occured: "+m);}
 		finally {
-			//System.out.println(a);
+			System.out.println(a);
 		}
 		/*
 		if(Validator.stringTest(a)) {
@@ -126,7 +127,7 @@ public class UserService implements UserServiceInterface {
 		return userRepository.findById(Id);
 	}
 	
-	@CrossOrigin(origins = {"http://localhost:4201","https://test-6780f.firebaseapp.com"})
+	@CrossOrigin(origins = {"http://192.168.0.165:4201","http://localhost:4201","https://test-6780f.firebaseapp.com"})
 	@PostMapping(path="/login")
 	@Produces(MediaType.APPLICATION_JSON)
 	//@Path("/all")
